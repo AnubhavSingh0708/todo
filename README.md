@@ -88,3 +88,69 @@ function addTodo(text) {
 
 }
 ```
+### marking todos done 
+when todos are done click on them to mark done using 
+javascript `addEventListener`to detect if it is clicked
+
+```
+const list = document.querySelector('.js-todo-list');
+
+list.addEventListener('click', event => {
+
+  if (event.target.classList.contains('js-tick')) {
+
+    const itemKey = event.target.parentElement.dataset.key;
+
+    toggleDone(itemKey);
+
+  }
+  ```
+  and then marking todos done on function toggleDone(itemKey);
+  ```
+  function toggleDone(key) {
+
+  const index = todoItems.findIndex(item => item.id === Number(key));
+
+  todoItems[index].checked = !todoItems[index].checked;
+
+  renderTodo(todoItems[index])
+
+  localStorage.setItem('todoItems', JSON.stringify(todoItems));
+
+}
+  ```
+  ### deleting todos 
+  detecting using 
+  ```
+  if (event.target.classList.contains('js-delete-todo')) {
+
+    const itemKey = event.target.parentElement.dataset.key;
+
+    deleteTodo(itemKey);
+
+  }
+
+});
+```
+and then deleting using 
+```
+function deleteTodo(key) {
+
+  const index = todoItems.findIndex(item => item.id === Number(key));
+
+  const todo = {
+
+    deleted: true,
+
+    ...todoItems[index]
+
+  }
+
+  todo.deleted = true
+
+  todoItems = todoItems.filter(item => item.id !== Number(key));
+
+  renderTodo(todo);
+
+}
+```
