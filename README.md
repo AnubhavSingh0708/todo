@@ -1,5 +1,6 @@
 # todo 
-this is a simple localhost based todo web app
+this is a simple localhost based todo web app 
+## [demo]( https://anubhavsingh0708.github.io/todo/"todo").
 ## how it works 
 ### finding todos 
 at first when the site loads it requests the todos from local storage using 
