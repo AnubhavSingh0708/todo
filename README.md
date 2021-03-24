@@ -41,4 +41,50 @@ if todo list is detected then it makes the todo list else it removes the list an
 
   }
 ```
-in function `renderToDo(t)` in the previous code
+in function `renderToDo(t)` in the previous code 
+### and when todo item is created 
+at first detecting if text input is submitted using 
+```
+const form = document.querySelector('.js-form');
+
+form.addEventListener('submit', event => {
+
+  event.preventDefault();
+
+  const input = document.querySelector('.js-todo-input');
+
+  const text = input.value.trim();
+
+  if (text !== '') {
+
+    addTodo(text);
+
+    input.value = '';
+
+    input.focus();
+
+  }
+
+});
+```
+and then on function addTodo(text); 
+creating todo item and saving to local host using 
+``` 
+function addTodo(text) {
+
+  const todo = {
+
+    text,
+
+    checked: false,
+
+    id: Date.now(),
+
+  };
+
+  todoItems.push(todo);
+
+  renderTodo(todo);
+
+}
+```
